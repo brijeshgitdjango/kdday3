@@ -1,0 +1,13 @@
+{% if user.is_authenticated %}
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+Room
+</a>
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="{% url 'room:floor_list' %}">Floor List</a>
+  <a class="dropdown-item" href="{% url 'room:floor_add' %}">Add Floor</a>
+  <a class="dropdown-item" href="{% url 'room:room_list' %}">Room List</a>
+  <a class="dropdown-item" href="{% url 'room:room_add' %}">Add Room</a>
+</div>
+</li>
+{% endif %}
