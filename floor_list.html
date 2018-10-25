@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Floors | {{block.super}} {% endblock title %}
+{% block head_extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+{% endblock head_extra %}
+{% block content %}
+<br><br><br>
+<center><h1 class="heading-menu">Floors List</h1>
+</center><br>
+<div class="container">
+		
+	<div>
+		{% if floor %}
+			<div id="floor">
+				{% for f in floor %}
+				<div class="floor_div">
+					<p>{{f.floorno}} 
+						<a href="{% url 'room:floor_update' id=f.id %}">Edit</a>
+						<a href="{% url 'room:floor_delete' id=f.id %}">Delete</a>
+					</p>
+				</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+		<hr>
+
+	</div>
+</div>
+
+
+{% endblock content %}

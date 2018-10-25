@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} {{title}} | {{block.super}} {% endblock title %}
+{% block head_extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+{% endblock head_extra %}
+{% block content %}
+<br><br><br>
+<center><h1 class="heading-menu">{{title}} List</h1>
+</center><br>
+<div class="container">
+		
+	<div id="outer_div">
+		{% if room %}
+		<table class="table">
+			
+			<tr>
+				<th>Room No.</th>
+				<th>Floor No.</th>
+				<th>Room Type</th>
+				<th>Fully Occupied</th>
+				
+			</tr>
+			{% for r in room %}
+			<tr>
+				<td><a href="{% url 'room:room_detail' id=r.id %}">{{r.roomno}}</a></td>
+				<td>{{r.floor}}</td>
+				<td>{{r.room_type}}</td>
+				<td>
+					{% if r.fully_occupied %}<p>Yes</p>{%else%}<p>No</p>{% endif %}</td>
+				{% if user.is_authenticated %}
+		        <td>
+		        	<a href="{% url 'room:room_update' id=r.id %}"><small>Edit</small></a>
+		        	<a href="{% url 'room:room_delete' id=r.id %}"><small>Delete</small></a>
+		        </td>
+		        {% endif %}
+				
+			</tr>
+			{% endfor %}
+		</table>
+
+		{% endif %}
+		<hr>
+
+	</div>
+</div>
+
+
+{% endblock content %}

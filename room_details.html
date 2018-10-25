@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Room Details | {{block.super}} {% endblock title %}
+{% block head_extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+{% endblock head_extra %}
+
+{% block content %}
+<br><br><br>
+	<div class="container">
+		<center><h1 class="heading-menu">Room No. {{room.roomno}} details</h1></center><br>
+		<center>
+		<div class="boxes col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+			<h1>Bed A</h1>
+			{% if beda %}
+				<p>Name:<a href="#">{{beda.name}}</a></p>
+				<p>Roll No.: {{beda.rollno}}</p>
+				<p>Mobile No.: {{beda.mobile}}</p>
+
+			{% else %}
+			<p>Not Allocated</p>
+			{% endif %}
+		</div>
+		<div class="boxes col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+			<h1>Bed B</h1>
+			{% if bedb %}
+				<p>Name:<a href="#">{{bedb.name}}</a></p>
+				<p>Roll No.: {{bedb.rollno}}</p>
+				<p>Mobile No.: {{bedb.mobile}}</p>
+
+			{% else %}
+			<p>Not Allocated</p>
+			{% endif %}
+		</div>
+		<div class="boxes col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+			<h1>Bed C</h1>
+			{% if bedc %}
+				<p>Name:<a href="#">{{bedc.name}}</a></p>
+				<p>Roll No.: {{bedc.rollno}}</p>
+				<p>Mobile No.: {{bedc.mobile}}</p>
+
+			{% else %}
+			<p>Not Allocated</p>
+			{% endif %}
+		</div>
+		<div class="boxes col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+			<h1>Bed D</h1>
+			{% if bedd %}
+				<p>Name:<a href="#">{{bedd.name}}</a></p>
+				<p>Roll No.: {{bedd.rollno}}</p>
+				<p>Mobile No.: {{bedd.mobile}}</p>
+
+			{% else %}
+			<p>Not Allocated</p>
+			{% endif %}
+		</div>
+		<center>
+		<a href="{% url 'room:room_list' %}">Back</a>
+	</div><br><br>
+
+
+{% endblock content %}

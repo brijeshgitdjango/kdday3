@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} {{title}}Delete | {{block.super}} {% endblock title %}
+{% block head_extra %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+{% endblock head_extra %}
+{% block content %}
+<br><br>
+<center><h1 class="heading_menu">{{title}} Delete</h1></center><br>
+
+<div class="container">
+	Are you sure you want to delete {{ data }}
+	<form action="" method='post'>
+		{% csrf_token %}
+		<input class="btn btn-danger" type="submit" value='Confirm'>
+		<a class="btn btn-info" href="{% url 'staff:detail' id=instance.id %}">Cancel</a>
+	</form>
+		
+</div>
+
+
+{% endblock content %}
